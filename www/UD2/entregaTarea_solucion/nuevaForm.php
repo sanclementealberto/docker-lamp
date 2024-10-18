@@ -21,7 +21,26 @@
                 </div>
 
                 <div class="container">
-                    <p>Aquí va el formulario </p>
+                    <form action="nueva.php" method="POST" class="mb-5">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">Identificador</label>
+                            <input type="text" class="form-control" id="id" name="id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado" name="estado" required>
+                                <option value="" selected disabled>Seleccione el estado</option>
+                                <option value="en_proceso">En Proceso</option>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="completada">Completada</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
                 </div>
             </main>
         </div>

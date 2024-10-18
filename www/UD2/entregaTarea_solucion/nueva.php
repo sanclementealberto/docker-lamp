@@ -21,7 +21,40 @@
                 </div>
 
                 <div class="container">
-                    <p>Aquí va el contenido </p>
+                    <?php
+                        require_once('utils.php');
+                        $id = $_POST['id'];
+                        $desc = $_POST['descripcion'];
+                        $estado = $_POST['estado'];
+                        $valido = true;
+                        if (!esCampoValido($id))
+                        {
+                            $valido = false;
+                        }
+                        if (!esCampoValido($desc))
+                        {
+                            $valido = false;
+                        }
+                        if (!esCampoValido($estado))
+                        {
+                            $valido = false;
+                        }
+                        if (!guardar($id, $desc, $estado))
+                        {
+                            $validao = false;
+                        }
+                        if ($valido)
+                        {
+                            echo "<p>La tarea $id se almacenó correctamente:</p>";
+                            echo "<ul><li>Descripción: $desc</li><li>Estado: $estado</li></ul>";
+                        }
+                        else
+                        {
+                            echo '<p class="error">Alguno de los campos no es válido.</p>';
+                        }
+
+                    ?>
+
                 </div>
             </main>
         </div>

@@ -21,7 +21,31 @@
                 </div>
 
                 <div class="container">
-                    <p>Aquí va la tabla </p>
+                <?php require_once('utils.php'); ?>
+                    <div class="table">
+                        <table class="table table-striped table-hover">
+                            <thead class="thead">
+                                <tr>                            
+                                    <th>Identificador</th>
+                                    <th>Descriptción</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $lista = tareas();
+                                    foreach ($lista as $tarea)
+                                    {
+                                        echo '<tr>';
+                                        echo '<td>' . $tarea['id'] . '</td>';
+                                        echo '<td>' . $tarea['descripcion'] . '</td>';
+                                        echo '<td>' . $tarea['estado'] . '</td>';
+                                        echo '</tr>';
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
         </div>
