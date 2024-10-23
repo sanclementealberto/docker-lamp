@@ -16,12 +16,12 @@
             <?php include_once('menu.php'); ?>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="container justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h2>Nueva tarea</h2>
                 </div>
 
-                <div class="container">
-                    <form action="nueva.php" method="POST" class="mb-5">
+                <div class="container justify-content-between">
+                    <form action="nueva.php" method="POST" class="mb-5 w-50">
                         <div class="mb-3">
                             <label for="id" class="form-label">Identificador</label>
                             <input type="text" class="form-control" id="id" name="id" required>
