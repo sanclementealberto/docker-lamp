@@ -33,12 +33,12 @@ $password = 'test';
 $dbname = 'colegio';
 
 try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  //  Forzar excepciones
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo 'Conexión correcta';
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    //  Forzar excepciones
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo 'Conexión correcta';
 } catch(PDOException $e) {
-  echo 'Fallo en conexión: ' . $e->getMessage();
+    echo 'Fallo en conexión: ' . $e->getMessage();
 }
 //3. Cierre de conexión
 $conPDO = null;
@@ -137,9 +137,9 @@ echo 'Conexión cerrada';
 
 
 echo '<h3>Crear BD y tabla PDO</h3>';
-$servername = "db";
-$username = "root";
-$password = "test";
+$servername = 'db';
+$username = 'root';
+$password = 'test';
 
 try {
     //1. Crear la conexión
