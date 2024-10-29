@@ -39,7 +39,7 @@ function filtraCampo($campo)
 
 function esCampoValido($campo)
 {
-    return empty(filtraCampo($campo));
+    return !empty(filtraCampo($campo));
 }
 
 function guardar($id, $desc, $est)
