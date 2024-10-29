@@ -52,7 +52,7 @@ function guardar($id, $desc, $est)
             'descripcion' => filtraCampo($desc),
             'estado' => filtraCampo($est)
         ];
-        array_push($array, $data);
+        array_push($tareas, $data);
         return true;
     }
     else
