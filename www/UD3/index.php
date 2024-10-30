@@ -1,6 +1,12 @@
 <?php
 
 echo '<h1>Conexiones</h1>';
+
+echo '<a href="crud_mysqli.php">CRUD MySQLi objeto</a><br>';
+echo '<a href="crud_mysqli_proc.php">CRUD MySQLi procedimental</a><br>';
+echo '<a href="crud_pdo.php">CRUD PDO</a><br>';
+
+
 echo '<h3>Conexión mysqli orientación a objetos</h3>';
 //1. Crear la conexión 
 $conexion = new mysqli('db', 'root', 'test', 'colegio');
@@ -170,3 +176,4 @@ finally {
     $conn = null;
     echo 'Conexión cerrada';
 }
+

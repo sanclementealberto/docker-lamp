@@ -15,7 +15,6 @@ catch (mysqli_sql_exception $e) {
 }
 
 
-
 if (isset($conexion) && $conexion->connect_errno === 0) {
     echo '<h3>INSERT</h3>';
     try {
@@ -83,31 +82,62 @@ if (isset($conexion) && $conexion->connect_errno === 0) {
 
     
     echo '<h3>SELECT</h3>';
-    //Configuramos una consulta SQL que selecciona las columnas id, nombre y apellido de la tabla Cliente. 
-    $sql = "SELECT id, nombre, apellido FROM clientes";
-    //Se ejecuta la consulta y almacena el resultado.
-    $resultados = $conexion->query($sql);
-    //Con num_rows se verifica si se devuelven más de cero filas
-    if($resultados->num_rows > 0){
-        //fetch_assoc() coloca todos los resultados en una matriz asociativa que podemos recorrer
-        //Con el bucle se recorre el conjunto de resultados y recuperan los datos de las columnas id, nombre y apellido para cada registro
-        while ($row = $resultados->fetch_assoc()) {
-            echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
+    try {
+        //Configuramos una consulta SQL que selecciona las columnas id, nombre y apellido de la tabla Cliente. 
+        $sql = "SELECT id, nombre, apellido FROM clientes";
+        //Se ejecuta la consulta y almacena el resultado.
+        $resultados = $conexion->query($sql);
+        //Con num_rows se verifica si se devuelven más de cero filas
+        if($resultados->num_rows > 0){
+            //fetch_assoc() coloca todos los resultados en una matriz asociativa que podemos recorrer
+            //Con el bucle se recorre el conjunto de resultados y recuperan los datos de las columnas id, nombre y apellido para cada registro
+            while ($row = $resultados->fetch_assoc()) {
+                echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
+            }
+        }
+        else {
+            echo "No hay resultados";
         }
     }
-    else {
-        echo "No hay resultados";
+    catch (mysqli_sql_exception $e) {
+        //Gestionar el error si hubiera
+        echo 'Error en la conexión: ' . $e->getMessage() . '<br>';
     }
     
 
     echo '<h3>UPDATE</h3>';
-
+    try {
+        //sql para actualizar un cliente
+        $sql = "UPDATE clientes SET apellido='Sanz' WHERE nombre='Marco'";
+        if ($conexion->query($sql)) {
+            echo "Actualizado correctamente<br>";
+        }
+        else {
+            echo "Error actualizando : " . $conexion->error;
+        }
+    }
+    catch (mysqli_sql_exception $e) {
+        //Gestionar el error si hubiera
+        echo 'Error en la conexión: ' . $e->getMessage() . '<br>';
+    }
 
     echo '<h3>DELETE</h3>';
-    
-    
+    try {
+        // sql para borrar un cliente
+        $sql = "DELETE FROM clientes WHERE id=3";
+        if ($conexion->query($sql)) {
+            echo "Eliminado correctamente<br>";
+        }
+        else {
+            echo "Error eliminando : " . $conexion->error;
+        }
+    }
+    catch (mysqli_sql_exception $e) {
+        //Gestionar el error si hubiera
+        echo 'Error en la conexión: ' . $e->getMessage() . '<br>';
+    }
 
     $conexion->close();
-    echo 'Conexión cerrada';
+    echo '<br>Conexión cerrada';
 }
 

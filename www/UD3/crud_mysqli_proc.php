@@ -46,12 +46,29 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 else {
-  echo "Sin resultados";
+  echo "Sin resultados<br>";
 }
 
+
 echo '<h3>UPDATE</h3>';
+//sql para actualizar un cliente
+$sql = "UPDATE clientes SET apellido='Sanz' WHERE nombre='Marco'";
+if (mysqli_query($con, $sql)) {
+    echo "Actualizado correctamente<br>";
+}
+else {
+    echo "Error actualizando: " . mysqli_error($con) . '<br>';
+}
 
 echo '<h3>DELETE</h3>';
-
+// sql parar borrar un cliente
+$sql = "DELETE FROM clientes WHERE id=3";
+if (mysqli_query($con, $sql)) {
+    echo "Eliminado correctamente<br>";
+}
+else {
+    echo "Error eliminando: " . mysqli_error($con) . '<br>';
+}
 
 mysqli_close($con);
+echo '<br>Conexión cerrada';

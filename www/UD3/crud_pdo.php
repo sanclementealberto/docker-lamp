@@ -82,7 +82,7 @@ if ($conPDO) {
         echo 'Los datos fueron insertados <br>';
     }
     catch(PDOExcetion $e){
-        echo 'Fallo en conexión: ' . $e->getMessage();
+        echo 'Fallo en INSERT: ' . $e->getMessage();
     }
 
 
@@ -101,46 +101,76 @@ if ($conPDO) {
             echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
         }
     }
-    catch(PDOException $e) {
-        echo 'Fallo en conexión: ' . $e->getMessage();
+    catch (PDOException $e) {
+        echo 'Fallo en SELECT: ' . $e->getMessage() . '<br>';
     }
 
     echo '<h5>FETCH_ASSOC</h5>';
-    //Si no hay parámetros en la consulta, se puede usar query() 
-    $stmt = $conPDO->query('SELECT id, nombre, apellido FROM clientes');
-    //Se indica que se quiere en formato de array asociativo.
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    // Se leen los datos por orden con fetch() 
-    while ($row = $stmt->fetch()) {
-        echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
+    try {
+        //Si no hay parámetros en la consulta, se puede usar query() 
+        $stmt = $conPDO->query('SELECT id, nombre, apellido FROM clientes');
+        //Se indica que se quiere en formato de array asociativo.
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        // Se leen los datos por orden con fetch() 
+        while ($row = $stmt->fetch()) {
+            echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
+        }
+        // Liberar los recursos utilizados para la consulta
+        $stmt = null;
     }
-    // Liberar los recursos utilizados para la consulta
-    $stmt = null;
+    catch(PDOException $e) {
+        echo 'Fallo en SELECT: ' . $e->getMessage() . '<br>';
+    }
 
     echo '<h5>FETCH_BOTH</h5>';
-    //En este caso hay parámetros y se usa una consulta preparada
-    $stmt = $conPDO->prepare('SELECT id, nombre, apellido FROM clientes WHERE apellido =:apellido');
-    //Es opcional y además, el modo por defecto
-    $stmt->setFetchMode(PDO::FETCH_BOTH);
-    //Se ejecuta pasando los parámetros necesarios
-    $stmt->execute(array('apellido'=>'Magán') );
-    
-    // Se leen los datos por orden con fetch() 
-    while ($row = $stmt->fetch()) {
-        echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
+    try {
+        //En este caso hay parámetros y se usa una consulta preparada
+        $stmt = $conPDO->prepare('SELECT id, nombre, apellido FROM clientes WHERE apellido =:apellido');
+        //Es opcional y además, el modo por defecto
+        $stmt->setFetchMode(PDO::FETCH_BOTH);
+        //Se ejecuta pasando los parámetros necesarios
+        $stmt->execute(array('apellido'=>'Magán') );
+        
+        // Se leen los datos por orden con fetch() 
+        while ($row = $stmt->fetch()) {
+            echo $row["id"] . " - " . $row["nombre"] . ' ' . $row["apellido"] . '<br>';
+        }
+        // Para liberar los recursos utilizados en la consulta SELECT
+        $stmt=null;
     }
-    // Para liberar los recursos utilizados en la consulta SELECT
-    $stmt=null;
+    catch(PDOException $e) {
+        echo 'Fallo en SELECT: ' . $e->getMessage() . '<br>';
+    }
 
 
     echo '<h3>UPDATE</h3>';
+    try {
+        //sql para actualizar un cliente
+        $sql = "UPDATE clientes SET apellido='Sanz' WHERE nombre='Marco'";
+        // Prepare statement
+        $stmt = $conPDO->prepare($sql);
+        // Ejecutar la consulta
+        $stmt->execute();
+        echo $stmt->rowCount() . " registros actualizados correctamente<br>";
+    }
+    catch(PDOException $e) {
+        echo 'Fallo en UPDATE: ' . $e->getMessage() . '<br>';
+    }
 
 
     echo '<h3>DELETE</h3>';
-    
-    
+    try {
+        // sql parar borrar un cliente
+        $sql = "DELETE FROM clientes WHERE id=3";
+        $conPDO->exec($sql);
+        echo "Registro borrado correctamente<br>";
+    }
+    catch(PDOException $e) {
+        echo 'Fallo en DELETE: ' . $e->getMessage() . '<br>';
+    }
+
 
     //Cerrar la conexión
     $conn = null;
-    echo 'Conexión cerrada';
+    echo '<br>Conexión cerrada';
 }
