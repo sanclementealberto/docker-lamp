@@ -1,10 +1,3 @@
-<?php
-include './nueva.php';
-$mensaje = obtenerDatosForm();
-if ($mensaje) {
-    echo $mensaje;
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,7 +20,6 @@ if ($mensaje) {
             menuUD2(); ?>
             <div class="col-10 ">
                 <h2 class="text-center "> Nueva Tarea </h2>
-
                 <form action="nueva.php" class="mb-5" method="POST">
 
                     <div class="mb-3">
@@ -40,9 +32,9 @@ if ($mensaje) {
                         <select class="form-select" aria-describedby="estado de la tarea" name="estado" required>
 
                             <option value="" disabled selected>Elige una estado</option>
-                            <option value="0" aria-describedby="pendiente"> pendiente </option>
-                            <option value="1" aria-describedby="proceso"> proceso </option>
-                            <option value="2" aria-describedby="completada"> completada </option>
+                            <option value="1" aria-describedby="pendiente"> pendiente </option>
+                            <option value="2" aria-describedby="proceso"> proceso </option>
+                            <option value="3" aria-describedby="completada"> completada </option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4">Enviar</button>
