@@ -1,3 +1,8 @@
+<?php include './utils.php';
+
+$mensaje = obtenerDatosForm();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +18,7 @@
    
 
 <?php
-    include './utils.php';
-
-    $mensaje = obtenerDatosForm();
+   
 
     function obtenerDatosForm() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

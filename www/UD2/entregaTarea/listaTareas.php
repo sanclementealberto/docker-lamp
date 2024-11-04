@@ -1,3 +1,7 @@
+<?php include './utils.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,33 +13,44 @@
 </head>
 
 <body>
+
     <?php include './header.php';
     headerUD2(); ?>
     <div class="container-fluid">
-    <div class="row">
-      <!-- Menu -->
-      <?php include './menu.php'; 
-      menuUD2();?>
-    <div class="table">
-        <table class="table table-striped table-hover">
-            <thead class="thead">
-                <tr>
-                    <th>Identificador</th>
-                    <th>Descriptción</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
+        <div class="row">
+            <!-- Menu -->
+            <?php include './menu.php';
+            menuUD2(); ?>
 
-            <tr>
-                <td></td>
-                ...
-            </tr>
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead class="thead">
+                        <tr>
+                            <th>Identificador</th>
+                            <th>Descriptción</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($tareas)): ?>
+                            <?php foreach ($tareas as $tarea): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($tarea['id']); ?></td>
+                                    <td><?php echo htmlspecialchars($tarea['descripcion']); ?></td>
+                                    <td><?php echo htmlspecialchars($tarea['estado']); ?></td>
 
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay tareas disponibles.</td>
+                            </tr>
+                        <?php endif; ?>
 
-
-        </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
     <!-- footer-->
     <!--asi incluyo el contenido de archivo php a otro -->
