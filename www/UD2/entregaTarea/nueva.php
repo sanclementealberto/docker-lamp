@@ -26,20 +26,18 @@
                 $resultado = guardarTarea($descripcion, $estado);
                 
                 return $resultado ? true :false ;
-            } else {
-                return "incomplete";
-            }
+            } 
         }
         return null;
     }
 
     function mostrarMensaje($mensaje) {
         if ($mensaje === true) {
-            return '<div class="alert alert-success" role="alert">Éxito! La tarea se ha guardado correctamente.</div>';
+            return '<div class="alert alert-success" role="alert"> La tarea se ha guardado correctamente.</div>';
         } elseif ($mensaje === false) {
-            return '<div class="alert alert-danger" role="alert">Error! Error al guardar la tarea. Verifique los datos.</div>';
+            return '<div class="alert alert-danger" role="alert"> Error al guardar la tarea. Verifique los datos.</div>';
         
-        
+        }
     }
     ?>
 
