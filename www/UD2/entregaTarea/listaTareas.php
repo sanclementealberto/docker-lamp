@@ -17,7 +17,10 @@
             <!-- Menu -->
             <?php include './menu.php';
             menuUD2(); ?>
-            <?php include './utils.php'; ?>
+            <?php include './utils.php'; 
+            
+            echo "<script>console.log(" . json_encode($tareas) . ");</script>";
+            ?>
 
             <div class="table">
                 <table class="table table-striped table-hover">
