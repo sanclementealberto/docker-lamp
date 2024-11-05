@@ -1,7 +1,3 @@
-<?php include './utils.php';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +17,7 @@
             <!-- Menu -->
             <?php include './menu.php';
             menuUD2(); ?>
+            <?php include './utils.php'; ?>
 
             <div class="table">
                 <table class="table table-striped table-hover">
@@ -35,11 +32,12 @@
                         <?php if (!empty($tareas)): ?>
                             <?php foreach ($tareas as $tarea): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($tarea['id']); ?></td>
+                                    <td><?php echo  htmlspecialchars($tarea['id']); ?></td>
                                     <td><?php echo htmlspecialchars($tarea['descripcion']); ?></td>
                                     <td><?php echo htmlspecialchars($tarea['estado']); ?></td>
 
                                 </tr>
+
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
