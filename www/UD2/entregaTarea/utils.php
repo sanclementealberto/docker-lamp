@@ -20,5 +20,5 @@ function guardarTarea($descripcion, $estado)
     $tareas[] = $nuevaTarea;
 
 
-    return $nuevaTarea;
+    return true;
 }
