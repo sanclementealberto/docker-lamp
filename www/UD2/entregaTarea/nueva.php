@@ -1,3 +1,8 @@
+<?php
+include './utils.php';
+//me da un warning:cannot modify header information
+$mensaje = obtenerDatosForm(); ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,55 +16,55 @@
 
 <body>
 
-    <?php include ("./header.php");
-    HeaderUD2();?>
 
     <?php
-    include './utils.php';
 
-    $mensaje = obtenerDatosForm();
-    
 
     function obtenerDatosForm(): bool|null
     {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $descripcion = trim($_POST['descripcion']);
-    $estado = trim($_POST['estado']);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $descripcion = trim($_POST['descripcion']);
+            $estado = trim($_POST['estado']);
 
-    if (!empty($descripcion) && !empty($estado)) {
-    $resultado = guardarTarea($descripcion, $estado);
+            if (!empty($descripcion) && !empty($estado)) {
+                $resultado = guardarTarea($descripcion, $estado);
 
-    return $resultado ? true : false;
-    }
-    }
-    return null;
+                return $resultado ? true : false;
+            }
+        }
+        return null;
     }
 
     function mostrarMensaje($mensaje)
     {
-    if ($mensaje===true) {
-    return '<div class="alert alert-success" role="alert"> La tarea se ha guardado correctamente.</div>';
-    } elseif ($mensaje===false) {
-    return '<div class="alert alert-danger" role="alert"> Error al guardar la tarea. Verifique los datos.</div>';
+        if ($mensaje === true) {
+            return '<div class="alert alert-success" role="alert"> La tarea se ha guardado correctamente.</div>';
+        } elseif ($mensaje === false) {
+            return '<div class="alert alert-danger" role="alert"> Error al guardar la tarea. Verifique los datos.</div>';
+        }
     }
-    }
-  
+
     ?>
 
-    <div class="container-fluid">
+    <?php include("./header.php");
+    HeaderUD2(); ?>
+
+    <
+        <div class="container-fluid">
         <div class="row">
-          <?php include './menu.php';
-          menuUD2();?>  
-         <div class="col-5 mt-5">
-        <?php echo mostrarMensaje($mensaje); ?>
+            <?php include './menu.php';
+            menuUD2(); ?>
+            <div class="col-5 mt-5">
+                <?php echo mostrarMensaje($mensaje);
+                echo "<script>console.log(" . json_encode($tareas) . ");</script>"; ?>
+            </div>
         </div>
+
         </div>
 
-    </div>
 
-
-    <?php include ("./footer.php");
-    footerUD2();?>
+        <?php include("./footer.php");
+        footerUD2(); ?>
 </body>
 
 </html>
