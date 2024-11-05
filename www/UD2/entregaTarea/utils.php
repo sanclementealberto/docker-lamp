@@ -1,20 +1,24 @@
 <?php
+$tareas = [];
 
-$tareas=[];
- 
-function guardarTarea($descripcion, $estado) {
+function guardarTarea($descripcion, $estado)
+{
     global $tareas;
+
+
     $descripcion = htmlspecialchars(trim($descripcion));
     $estado = htmlspecialchars(trim($estado));
 
-    
-    
-    $tareas[] = [
-        'id' => count($tareas) + 1,
+
+    $nuevaTarea = [
+        'id' => count($tareas) + 1, // ID
         'descripcion' => $descripcion,
         'estado' => $estado
     ];
 
-    
-    return true;
+
+    $tareas[] = $nuevaTarea;
+
+
+    return $nuevaTarea;
 }
