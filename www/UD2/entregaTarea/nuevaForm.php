@@ -32,9 +32,9 @@
                         <select class="form-select" aria-describedby="estado de la tarea" name="estado" required>
 
                             <option value="" disabled selected>Elige una estado</option>
-                            <option value="1" aria-describedby="pendiente"> pendiente </option>
-                            <option value="2" aria-describedby="proceso"> proceso </option>
-                            <option value="3" aria-describedby="completada"> completada </option>
+                            <option value="pendiente" aria-describedby="pendiente"> pendiente </option>
+                            <option value="proceso" aria-describedby="proceso"> proceso </option>
+                            <option value="completada" aria-describedby="completada"> completada </option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4">Enviar</button>
