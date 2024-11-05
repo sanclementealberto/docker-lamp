@@ -11,6 +11,8 @@
 
 <body>
 
+    <?php include ("./header.php");
+    HeaderUD2();?>
 
     <?php
     include './utils.php';
@@ -27,7 +29,7 @@
     if (!empty($descripcion) && !empty($estado)) {
     $resultado = guardarTarea($descripcion, $estado);
 
-    return $resultado ? !empty($resultado) : empty($resultado);
+    return $resultado ? true : false;
     }
     }
     return null;
@@ -35,20 +37,29 @@
 
     function mostrarMensaje($mensaje)
     {
-    if (!empty($mensaje)) {
+    if ($mensaje===true) {
     return '<div class="alert alert-success" role="alert"> La tarea se ha guardado correctamente.</div>';
-    } elseif (empty($mensaje)) {
+    } elseif ($mensaje===false) {
     return '<div class="alert alert-danger" role="alert"> Error al guardar la tarea. Verifique los datos.</div>';
     }
     }
   
     ?>
 
-    <div class="container mt-4">
+    <div class="container-fluid">
+        <div class="row">
+          <?php include './menu.php';
+          menuUD2();?>  
+         <div class="col-5 mt-5">
         <?php echo mostrarMensaje($mensaje); ?>
+        </div>
+        </div>
 
     </div>
 
+
+    <?php include ("./footer.php");
+    footerUD2();?>
 </body>
 
 </html>
