@@ -1,18 +1,13 @@
 <?php
-session_start(); // Inicia la sesión
 
-// Inicializa la variable de sesión si no existe
-if (!isset($_SESSION['tareas'])) {
-    $_SESSION['tareas'] = [];
-}
-
+$tareas=[];
  
 function guardarTarea($descripcion, $estado) {
-   
+    global $tareas;
     $descripcion = htmlspecialchars(trim($descripcion));
     $estado = htmlspecialchars(trim($estado));
 
-    global $tareas;
+    
     
     $tareas[] = [
         'id' => count($tareas) + 1,
