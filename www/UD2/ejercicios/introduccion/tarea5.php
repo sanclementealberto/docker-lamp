@@ -22,25 +22,26 @@
 
         $x=20;
         $y= 10;
+        $resultado;
 
         function  suma($x,$y){
-            return $x + $y;
+            return $resultado=$x + $y;
         }
 
         function resta($x,$y){
-            return $x-$y;
+            return $resultado=$x-$y;
         }
 
         function multiplicacion($x,$y){
-            return $x*$y;
+            return $resultado=$x*$y;
         }
 
         function division( $x,$y){
-            return $x/$y;
+            return $resultado=$x/$y;
         }
 
         function modulo($x,$y){
-            return $x %$y;
+            return $resultado=$x %$y;
         }
 
         echo suma($x,$y)."<br/>";
