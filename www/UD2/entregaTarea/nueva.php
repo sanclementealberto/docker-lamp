@@ -27,7 +27,7 @@
     if (!empty($descripcion) && !empty($estado)) {
     $resultado = guardarTarea($descripcion, $estado);
 
-    return $resultado ? true : false;
+    return $resultado ? !empty($resultado) : empty($resultado);
     }
     }
     return null;
@@ -35,9 +35,9 @@
 
     function mostrarMensaje($mensaje)
     {
-    if ($mensaje === true) {
+    if (!empty($mensaje)) {
     return '<div class="alert alert-success" role="alert"> La tarea se ha guardado correctamente.</div>';
-    } elseif ($mensaje === false) {
+    } elseif (empty($mensaje)) {
     return '<div class="alert alert-danger" role="alert"> Error al guardar la tarea. Verifique los datos.</div>';
     }
     }
