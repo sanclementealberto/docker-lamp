@@ -10,6 +10,7 @@
 <body>
     <?php
     $celsius=0;
+    
         function farenheitToCelsius($temperaturaFarenheit){
             global $celsius;
 
@@ -49,6 +50,45 @@
         echo multiplicacion($x,$y)."<br/>";
         echo division( $x,$y)."<br/>";
         echo modulo($x,$y)."<br/>";
+        
+        function cuadradoNumero(){
+            $cuadrado=0;
+           
+
+            for($i= 0; $i< 30; $i++ )
+            {
+                $numero1=$i*$i;
+                $resultado="el resultado de ".$i." es " .$cuadrado." <br/>"; 
+
+               
+            }
+
+            return $numero1. "<br/>";
+        }
+
+       echo cuadradoNumero();
+       
+        function areaRectangulo($base,$altura){
+            
+            $area=$base*$altura;
+            
+            return "<p>la area es ".$area ."</p> </br/>";
+
+        }
+
+        echo areaRectangulo(5,4);
+
+
+        function perimetroRectangulo($base,$altura){
+            $perimetro=2*$base+ 2*$altura;
+
+            return "<p> el perimetro es ".$perimetro. "</p>";
+
+        }
+        echo perimetroRectangulo(5,4);
+
+
+
 
     ?>
 
