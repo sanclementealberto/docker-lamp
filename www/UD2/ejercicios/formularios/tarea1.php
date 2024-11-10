@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <form action="tarea1lista.php" method="post">
         <div class="row">
-            <div class=""mb-3>
+            <div class="mb-3">
                 <label for="nombre" aria-details="nombre" class="form-label">nombre</label>
                 <input class="form-control" placeholder="nombre" aria-describedby="nombre" name="nombre" required>
                 <label for="apellido" aria-details="apellido" class="form-label">apellido </label>
