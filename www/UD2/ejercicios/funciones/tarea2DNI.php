@@ -31,7 +31,8 @@
 
 
         }
-        echo comprobar_nif("53795281a");
+        echo comprobar_nif("53795281A");
+        echo comprobar_nif("53795281Y");
 
 ?>
 </body>
