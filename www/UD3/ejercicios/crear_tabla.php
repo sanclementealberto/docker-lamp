@@ -23,6 +23,16 @@ $sql_tabla= 'CREATE TABLE IF NOT EXISTS clientes(
     }
 
 
+$sql_insert="INSERT INTO clientes(nombre,apellido,email)
+VALUES ('Marco','Magan','marco@iessanclemente.net');"; 
+
+if($conexion ->query($sql_insert)){
+    echo "se ha creado un nuevo registro";
+}
+else{
+    echo " no se pudo crear el nuevo registro ".$conexion->error;
+}
+
 }catch (mysqli_sql_exception $error)
 {
     echo "Error en la conexion :" .$error->getMessage() . "<br/>";
