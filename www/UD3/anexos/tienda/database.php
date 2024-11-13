@@ -196,5 +196,65 @@ function buscaUsuario($id)
 
 function borraUsuario($id)
 {
-    
+    try {
+        $conexion = conectaTienda();
+
+        if ($conexion->connect_error)
+        {
+            return [false, $conexion->error];
+        }
+        else
+        {
+            $sql = "DELETE FROM usuarios WHERE id = " . $id;
+            if ($conexion->query($sql))
+            {
+                return [true, 'Usuario borrado correctamente.'];
+            }
+            else
+            {
+                return [false, 'No se pudo borrar el usuario.'];
+            }
+            
+        }
+        
+    }
+    catch (mysqli_sql_exception $e) {
+        return [false, $e->getMessage()];
+    }
+    finally
+    {
+        cerrarConexion($conexion);
+    }
+}
+
+function actualizaUsuario($id, $nombre, $apellidos, $edad, $provincia)
+{
+    try {
+        $conexion = conectaTienda();
+
+        if ($conexion->connect_error)
+        {
+            return [false, $conexion->error];
+        }
+        else
+        {
+            $sql = "UPDATE usuarios SET nombre = ?, apellidos = ?, edad = ?, provincia = ? WHERE id = ?";
+            $stmt = $conexion->prepare($sql);
+            
+            $stmt->bind_param("ssisi", $nombre, $apellidos, $edad, $provincia, $id);
+
+            $stmt->execute();
+
+            return [true, 'Usuario actualizado correctamente.'];
+            
+        }
+        
+    }
+    catch (mysqli_sql_exception $e) {
+        return [false, $e->getMessage()];
+    }
+    finally
+    {
+        cerrarConexion($conexion);
+    }
 }
