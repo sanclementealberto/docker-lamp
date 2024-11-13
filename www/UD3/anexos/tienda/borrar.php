@@ -21,7 +21,7 @@
                             $resultado = buscaUsuario($id);
                             if (!empty($id) && $resultado[0])
                             {
-                                $resultado = borraUsuario($resultado[1]['id'];
+                                $resultado = borraUsuario($resultado[1]['id']);
                                 if ($resultado[0])
                                 {
                                     echo '<div class="alert alert-success" role="alert">Usuario borrado correctamente.</div>';
