@@ -8,7 +8,7 @@ $conexion=null;
 try{
     $conexion=mysqli_connect("db","root","test","myDB");
     echo " conexion correcta bd <br/>";
-    $sql ="UPDATE clientes set apellido ='maneiro' Where nombre ='Marco'";
+    $sql ="UPDATE clientes set apellido ='magan' Where nombre ='Marco'";
 
     if($conexion->query($sql)){
         echo "campo actualizado correctamente";
