@@ -111,6 +111,8 @@ function eliminarUsuario($id)
         }
 
     } catch (mysqli_sql_exception $e) {
+        // tambien puedeo hacer
+        //return [false."error en la conexion ".$e->getMessage()];
         return " Error de conexion  al intenar añadir nuevo usuario " . $e->getMessage() . "";
 
     } finally {
@@ -128,7 +130,7 @@ function modificarUsuario($id, $nombre, $apellidos, $edad, $provincia)
         $conexion = conexionBDTienda();
         $modificar_usuario = $conexion->prepare("UPDATE usuarios set nombre= ?, apellido= ?, edad= ? , provincia= ?  where id = ? ");
 
-        $modificar_usuario->bind_param("ssisi", $nombre, $apellido, $edad, $provincia, $id);
+        $modificar_usuario->bind_param("ssisi", $nombre, $apellidos, $edad, $provincia, $id);
 
         if (!$modificar_usuario->execute()) {
             throw new mysqli_sql_exception("error al crear nuevo usuario " . $modificar_usuario->error);

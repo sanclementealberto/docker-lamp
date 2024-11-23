@@ -28,7 +28,7 @@ HTML;
 
 
 
-//El operador ?? devuelve el primer operando si este existe y no es null. 
+//El operador ?? devuelve el primer operando si este existe  o es null en este caso un string vacio. 
 //Si el primer operando no está definido o es null, devuelve el segundo operando.
 
 function guardarUsuarioBD(){
@@ -46,12 +46,12 @@ function guardarUsuarioBD(){
                 
                 return  "Usuario guardado con exito";
             } else {
-                echo "Hubo un problema al guardar el usuario.";
+               
                 return  "Hubo un problema al guardar el usuario.";;
             }
         }else{
-            echo $validacion;
-            return false ."error validacion";
+            
+            return [false ."error validacion".$validacion];
         }
 
     }

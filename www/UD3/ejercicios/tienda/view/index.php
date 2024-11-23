@@ -15,6 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $guardarUsuario = guardarUsuarioBD();
 }
 
+include_once("../view/listaUsuariosView.php");
+$listaUsuario=listaUsuariosView();
+
 $nuevoUsuario = nuevoUsuarioView();
 ?>
 
@@ -63,7 +66,7 @@ $nuevoUsuario = nuevoUsuarioView();
             include_once("./index.php");
             break;
         case 'listaUsuariosView':
-            include_once("./listaUsuariosView.php");
+            echo $listaUsuario;
             break;
         case 'nuevoUsuarioView':
             echo $nuevoUsuario;
