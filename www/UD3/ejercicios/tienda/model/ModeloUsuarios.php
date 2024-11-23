@@ -1,5 +1,5 @@
 <?php
-include_once("../controller/ManejoBD.php");
+include_once("ManejoBD.php");
 
 
 function crearTablaUsuarios()
@@ -97,7 +97,7 @@ function eliminarUsuario($id)
 {
     try {
         $conexion = conexionBDTienda();
-        $borrarUsuario = $conexion->prepare("DELETE FROM usuarios where ?");
+        $borrarUsuario = $conexion->prepare("DELETE FROM usuarios where id =?");
         $borrarUsuario->bind_param("i", $id);
 
         if (!$borrarUsuario->execute()) {

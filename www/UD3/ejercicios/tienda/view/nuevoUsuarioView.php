@@ -3,10 +3,14 @@ include_once("../model/ModeloUsuarios.php");
 
 function nuevoUsuarioView()
 {
+
+
+  
+ 
     //<form action="./listaUsuarios.php" method="post"></form> el navegador vera este codigo
     $actionUrl = htmlspecialchars($_SERVER['PHP_SELF']);
     return <<<HTML
-    <div class="container-fluid col-3  vh-100 d-flex justify-content-center ">
+    <div class="container-fluid col-3 mt-5 vh-100 d-flex justify-content-center ">
     <div class="container"> 
             <form action="$actionUrl" method="post">
                 <label for="nombre">Nombre</label>
@@ -23,6 +27,8 @@ function nuevoUsuarioView()
     </div>
 HTML;
 }
+
+
 
 
 

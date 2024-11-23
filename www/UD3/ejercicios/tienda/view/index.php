@@ -29,6 +29,7 @@ $nuevoUsuario = nuevoUsuarioView();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda De Recambios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -51,8 +52,8 @@ $nuevoUsuario = nuevoUsuarioView();
         if (isset($guardarUsuario)) {
             // Mostrar el mensaje de éxito o error después del encabezado y menú
             echo $guardarUsuario ? 
-                "<div class='alert alert-success'>Usuario guardado con éxito.</div>" : 
-                "<div class='alert alert-danger'>Hubo un problema al guardar el usuario.</div>";
+                "<div class='alert mt-3 alert-success'>Usuario guardado con éxito.</div>" : 
+                "<div class='alert mt-3 alert-danger'>Hubo un problema al guardar el usuario.</div>";
         }
         ?>
    

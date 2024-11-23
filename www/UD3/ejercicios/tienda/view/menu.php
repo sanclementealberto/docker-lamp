@@ -10,12 +10,12 @@ function menuTienda()
     $actionUrl = htmlspecialchars('./listaUsuarios.php');
 
     return <<<HTML
-        <div class="container vh-100  col-2  menu-background text-white-100 elemento-fijo">
+        <div class="container mt-10 vh-100  mt-5 col-2  menu-background text-white-100 elemento-fijo">
         <div class="row ">
 
         <h4 class="text-center">Menú</h4>
             <ul class="nav flex-column ">
-            <li class="nav mb-3" >
+            <li class="nav mb-3 " >
                     <a  class="nav-link col-6 text-white-100" href="?page=inicio">Inicio</a>
                 </li>
                 <li class="nav-item ">

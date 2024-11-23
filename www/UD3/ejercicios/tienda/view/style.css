@@ -19,6 +19,7 @@ html body{
 
 .menu-background{
     background-color: rgb(32, 26, 26);
+    z-index: 0;
 }
 
 .menu-width-15{
