@@ -1,0 +1,27 @@
+html body{
+    font-family: 'Open Sans', sans-serif  !important;
+    margin: 0;
+    padding: 0;
+    
+}
+/*!importan hace que se sobreponga sobre bootstrap para aplicar el tipo de letra */
+.bg-indigo-100 {
+    background-color: #eff1ff;
+  }
+.elemento-fijo{
+    
+    position: fixed;
+}
+
+.text-white-100{
+    color: #edeef7;
+} 
+
+.menu-background{
+    background-color: rgb(32, 26, 26);
+    z-index: 0;
+}
+
+.menu-width-15{
+    width: 15vw; /*vw viewport */
+}
