@@ -135,7 +135,7 @@ function buscarTareaPorId($id) {
         cerrarConexionMYSQLI($conexion);
     }
 }
-function buscarIdUsuarioMYSQLI($id)
+function buscarIdUsuarioMYSQLI($username)
 {
     try {
 
@@ -144,13 +144,13 @@ function buscarIdUsuarioMYSQLI($id)
         $conexion->select_db('tareas');
 
 
-        $sqlObtenerUsuario = $conexion->prepare("SELECT username FROM usuarios WHERE id = ?");
+        $sqlObtenerUsuario = $conexion->prepare("SELECT id FROM usuarios WHERE username = ?");
         if (!$sqlObtenerUsuario) {
             throw new mysqli_sql_exception("Error en la preparación de la consulta: " . $conexion->error);
         }
 
         // Asigna el parámetro y ejecuta la consulta
-        $sqlObtenerUsuario->bind_param('i', $id);
+        $sqlObtenerUsuario->bind_param('s', $username);
         $sqlObtenerUsuario->execute();
 
         // Obtiene el resultado de la consulta
@@ -164,7 +164,7 @@ function buscarIdUsuarioMYSQLI($id)
         if ($usuario) {
             return [true, $usuario['id']];
         } else {
-            return [false, "Usuario no encontrado: $id"];
+            return [false, "Usuario no encontrado: $username"];
         }
     } catch (mysqli_sql_exception $e) {
         return [false, "Error de MySQL: "];
@@ -205,6 +205,40 @@ function listarTareasMYSQLI()
 
 
 }
+
+function listarTareasMYSQLIId($id)
+{
+
+    try {
+        $conexion = conexionMYSQLI();
+        $conexion->select_db("tareas");
+
+        $sqlListaTareas = "SELECT t.id,t.titulo,t.descripcion,t.estado,u.username 
+        FROM tareas t
+        INNER JOIN usuarios u ON t.id_usuario=u.id";
+
+        $listaTareas = $conexion->query($sqlListaTareas);
+
+        //compruuebo si me devuelve 1 linea o mas
+        if ($listaTareas->num_rows > 0) {
+
+            return [true, $listaTareas->fetch_all(MYSQLI_ASSOC)];
+        } else {
+            return [false, "No hay tareas disponibles."];
+        }
+
+
+    } catch (mysqli_sql_exception $e) {
+        return [false, "error lista tareas conexion "];
+
+    } finally {
+        cerrarConexionMYSQLI($conexion);
+    }
+
+
+}
+
+
 
 function editarTareaMYSQLI($id, $titulo, $descripcion, $estado, $id_usuario)
 {

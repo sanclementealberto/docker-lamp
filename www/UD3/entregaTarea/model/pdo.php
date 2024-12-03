@@ -246,7 +246,32 @@ function listaUsuariosPDO()
 }
 
 
+function listaUsuariosPDOID($id)
+{
+    try {
+        $conexion = conexionPDO();
 
+        if (!$conexion) {
+            return [false, "problema al conectarse la bd"];
+        }
+        $conexion->exec("USE tareas");
+
+        $sqlListaUsuarios = $conexion->prepare("SELECT id,username,nombre,apellidos FROM usuarios");
+        $sqlListaUsuarios->execute();
+
+        $listaUsuarios = $sqlListaUsuarios->fetchAll(PDO::FETCH_ASSOC);
+
+        return [true, $listaUsuarios];
+
+
+    } catch (PDOException $e) {
+
+        return [true, "error al mostrar la lista de usuarios", $e->getMessage()];
+
+    } finally {
+        cerrarConexionPDO($conexion);
+    }
+}
 
 
 

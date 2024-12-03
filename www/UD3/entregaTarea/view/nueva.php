@@ -75,7 +75,7 @@ $menu = menuTarea();
                         if ($resultadoUsuario[0] === true) {
                             //usuario id
                             $idusuario = $resultadoUsuario[1];
-                         //   echo "$idusuario";
+                        //    echo "$idusuario";
                             
                             // Crear la tarea
                             $resultado = NuevaTareaMYSQLI(filtraCampo($titulo), filtraCampo($descripcion), filtraCampo($estado), $idusuario);

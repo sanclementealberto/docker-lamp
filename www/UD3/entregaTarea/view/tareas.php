@@ -8,7 +8,8 @@ $footer = footerTareas();
 include_once("menu.php");
 $menu = menuTarea();
 
-
+require_once("../model/mysqli.php");
+require_once("../model/pdo.php");
 
 ?>
 <!DOCTYPE html>
@@ -32,8 +33,48 @@ $menu = menuTarea();
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="container justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>Lista Tareas</h2>
-                    <table class="table table-hover table-bordered">
+                    <h2> Tareas</h2>
+                    <?php
+
+                    $tareas = [];
+                    $error = "";
+
+                    // Procesar formulario
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type'])) {
+                        $form_type = $_POST['form_type'];
+
+                        switch ($form_type) {
+                            case "forTareas":
+                                // Procesar formulario de tareas
+                                $tarea_id = $_POST['tareas'] ?? null;
+                                if ($tarea_id) {
+                                    $tareas = listarTareasMYSQLIId($tarea_id); // Implementar la función para filtrar por ID de tarea
+                                } else {
+                                    $error = "No se recibió un ID de tarea válido.";
+                                }
+                                break;
+
+                            case "forUsuarios":
+                                // Procesar formulario de usuarios
+                                $usuario_id = $_POST['usuario'] ?? null;
+                                if ($usuario_id) {
+                                    $tareas = listaUsuariosPDOID($usuario_id);
+
+
+
+                                } else {
+                                    $error = "No se recibió un ID de usuario válido.";
+                                }
+                                break;
+
+                            default:
+                                // Acción por defecto si no se reconoce el formulario
+                                $error = "Formulario no reconocido.";
+                                break;
+                        }
+                    } else {
+                        ?>
+                        <table class="table table-hover table-bordered">
                         <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
@@ -48,8 +89,11 @@ $menu = menuTarea();
                             </tr>
                         </thead>
                         <tbody>
+                            
                             <?php
-                            require_once("../model/mysqli.php");
+
+                            //!!!tendria que haber hecho un un form.php!!!
+                           
                             $resultado = listarTareasMYSQLI();
                             if ($resultado[0] === true) {
                                 $tareas = $resultado[1];
@@ -85,6 +129,10 @@ $menu = menuTarea();
                             ?>
                         </tbody>
                     </table>
+                     <?php  
+                    }
+                    ?>
+
                 </div>
             </main>
         </div>
