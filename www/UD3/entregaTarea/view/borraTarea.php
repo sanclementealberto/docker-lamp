@@ -30,22 +30,33 @@ $menu = menuTarea();
             <?php echo $menu; ?>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="container justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>Tarea Unidad 3</h2>
-                </div>
+              <?php
+              require_once("../model/mysqli.php");
+              if(!empty($_GET)){
+                $id=$_GET['id'];
+                $resultado=borrarTareaMYSQLI($id);
 
-                <div class="container justify-content-between">
-                    <p>TAREA UNIDAD 3 </p>
-                </div>
+
+                if(!empty($id) && $resultado[0]){
+                    echo '<div class="alert alert-success" role="alert">tarea borrado con exito.</div>';
+
+                }
+                else{
+                    echo   '<div class="alert alert-danger" role="alert">fallo al borrar tarea</div>';
+                }
+
+              }else{
+            
+              echo '<div class="alert alert-danger" role="alert">No se paso un id de ese tarea</div>';
+
+            }
+
+                ?>
 
 
             </main>
-
         </div>
-
     </div>
-
     <?php echo $footer; ?>
 </body>
 

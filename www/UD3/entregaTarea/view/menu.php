@@ -12,32 +12,32 @@ function menuTarea()
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../model/mysqli.php.php">
+                <a class="nav-link" href="init.php">
                     Inicializar BD
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tareas.php">
+                <a class="nav-link" href="nuevoUsuarioForm.php">
                     Nuevo Usuario (PDO)
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tareas.php">
+                <a class="nav-link" href="usuarios.php">
                     Lista de Usuarios (PDO)
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tareas.php">
+                <a class="nav-link" href="nuevaForm.php">
                     Nueva Tarea (mysqli)
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="tareas.php">
-                    Lista de Tareas (PDO)
+                    Lista de Tareas (mysqli)
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tareas.php">
+                <a class="nav-link" href="buscaTareas.php">
                    Buscador de Tareas(PDO)
                 </a>
             </li>
