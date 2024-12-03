@@ -105,15 +105,7 @@ $menu = menuTarea();
                         <button class="btn btn-primary mb-3" type="submit" name="editar_tarea">Guardar cambios</button>
                     </form>
 
-
-
-
-
-
-
                 </div>
-
-
 
             </main>
 
