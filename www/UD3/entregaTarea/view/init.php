@@ -9,7 +9,7 @@ include_once("../view/menu.php");
 $menu = menuTarea();
 
 include("../model/mysqli.php");
-$conexion = conexionMYSQLI();
+
 $tablaTareas = crearTablaTareas();
 
 include("../model/pdo.php");
@@ -40,22 +40,17 @@ $tablaUsuarios = crearTablaUsuario();
                     class="container justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <div class="alert">
                         <?php
-                        if ($conexion[0] === true) {
-                            echo "<div class='alert alert-danger'>" . $conexion[1] . "</div>";
-                        } else {
-                            // Conexión exitosa y/o base de datos creada
-                            echo "<div class='alert alert-success'>" . $conexion[1] . "</div>";
+                        try {
+                            $conexion = conexionMYSQLI();
+                            
+                            
+                            echo "<div class='alert alert-success'>Conexión realizada y base de datos creada correctamente.</div>";
+                        } catch (Exception $e) {
+                            // Error en la conexión o creación de la base de datos
+                            echo "<div class='alert alert-danger'>Error: " . $e->getMessage() . "</div>";
                         }
                         ?>
-                        <?php
-                        if ($tablaTareas[0] === true) {
-                            echo "<div class='alert alert-danger'>" . $tablaTareas[1] . "</div>";
-                        } else {
-                            // Conexión exitosa y/o base de datos creada
-                            echo "<div class='alert alert-success'>" . $tablaTareas[1] . "</div>";
-                        }
 
-                        ?>
 
                         <?php
                         if ($tablaUsuarios[0] === true) {
@@ -63,6 +58,15 @@ $tablaUsuarios = crearTablaUsuario();
                         } else {
                             // Conexión exitosa y/o base de datos creada
                             echo "<div class='alert alert-success'>" . $tablaUsuarios[1] . "</div>";
+                        }
+
+                        ?>
+                        <?php
+                        if ($tablaTareas[0] === true) {
+                            echo "<div class='alert alert-success'> $tablaTareas[1]</div>";
+                        } else {
+                            // Conexión exitosa y/o base de datos creada
+                            echo "<div class='alert alert-danger'>" . $tablaTareas[1] . "</div>";
                         }
 
                         ?>

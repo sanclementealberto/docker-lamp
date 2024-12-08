@@ -16,12 +16,12 @@ function conexionMYSQLI()
         if ($conexion->query($sqldatabase)) {
             return $conexion;
         } else {
-            return [false, "error al crear la base de datos tareaud3" . $conexion->error];
+            throw new Exception("error al crear la bd");
         }
 
 
     } catch (mysqli_sql_exception $e) {
-        return [false, $e->getMessage()];
+        throw new Exception($e->getMessage());
 
     }
 }
@@ -42,10 +42,7 @@ function crearTablaTareas()
 
         $conexion = conexionMYSQLI();
 
-        if ($conexion[0] === 0) {
-            return $conexion;
-        }
-
+     
         $conexion = new mysqli("db", "root", "test", "tareas");
 
         if ($conexion->query($tablaTareas)) {
@@ -59,7 +56,7 @@ function crearTablaTareas()
         return [false, $e->getMessage()];
 
     } finally {
-        cerrarConexion($conexion);
+        cerrarConexionMYSQLI($conexion);
     }
 
 }
@@ -73,7 +70,7 @@ function NuevaTareaMYSQLI($titulo, $descripcion, $estado, $idusuario)
     try {
         $conexion = conexionMYSQLI();
         //seleciono bd
-        $conexion->select_db('tareas');
+        $conexion = new mysqli("db", "root", "test", "tareas");
 
         $sqlNuevaTarea = $conexion->prepare("INSERT INTO tareas (titulo,descripcion,estado,id_usuario)
         VALUEs(?,?,?,?)");
