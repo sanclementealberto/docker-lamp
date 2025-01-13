@@ -35,6 +35,17 @@
                         }
                         echo $resultado[1];
                         echo '</div>';
+                        $resultado = createTablaProductos();
+                        if ($resultado[0])
+                        {
+                            echo '<div class="alert alert-success" role="alert">';
+                        }
+                        else
+                        {
+                            echo '<div class="alert alert-warning" role="alert">';
+                        }
+                        echo $resultado[1];
+                        echo '</div>';
                     ?>
                 </div>
                 <?php include_once('back.php'); ?>

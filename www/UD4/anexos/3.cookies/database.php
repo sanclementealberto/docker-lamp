@@ -106,6 +106,56 @@ function createTablaUsuarios()
     }
 }
 
+function createTablaProductos()
+{
+    try {
+        $conexion = conectaTienda();
+        
+        if ($conexion->connect_error)
+        {
+            return [false, $conexion->error];
+        }
+        else
+        {
+            // Verificar si la tabla ya existe
+            $sqlCheck = "SHOW TABLES LIKE 'productos'";
+            $resultado = $conexion->query($sqlCheck);
+
+            if ($resultado && $resultado->num_rows > 0)
+            {
+                return [false, 'La tabla "productos" ya existía.'];
+            }
+
+            $sql = '
+                CREATE TABLE IF NOT EXISTS `tienda`.`productos` (
+                    `id` INT NOT NULL AUTO_INCREMENT, 
+                    `nombre` VARCHAR(50) NOT NULL, 
+                    `descripcion` VARCHAR(100) NOT NULL, 
+                    `precio` FLOAT NOT NULL, 
+                    `unidades` INT NOT NULL,
+                    `foto` BLOB NOT NULL,
+                    PRIMARY KEY (`id`) 
+                )';
+            if ($conexion->query($sql))
+            {
+                return [true, 'Tabla "productos" creada correctamente'];
+            }
+            else
+            {
+                return [false, 'No se pudo crear la tabla "productos".'];
+            }
+        }
+    }
+    catch (mysqli_sql_exception $e)
+    {
+        return [false, $e->getMessage()];
+    }
+    finally
+    {
+        cerrarConexion($conexion);
+    }
+}
+
 function listaUsuarios() {
     try {
         $conexion = conectaTienda();
@@ -160,6 +210,36 @@ function nuevoUsuario($nombre, $apellidos, $edad, $provincia)
     }
 }
 
+function nuevoProducto($nombre, $descripcion, $precio, $unidades, $foto)
+{
+    try {
+        $conexion = conectaTienda();
+        
+        if ($conexion->connect_error)
+        {
+            return [false, $conexion->error];
+        }
+        else
+        {
+            $stmt = $conexion->prepare("INSERT INTO productos (nombre, descripcion, precio, unidades, foto) VALUES (?,?,?,?,?)");
+            $stmt->bind_param("ssdis", $nombre, $descripcion, $precio, $unidades, $foto);
+
+            $stmt->execute();
+
+            return [true, 'Usuario creado correctamente.'];
+        }
+    }
+    catch (mysqli_sql_exception $e)
+    {
+        return [false, $e->getMessage()];
+    }
+    finally
+    {
+        cerrarConexion($conexion);
+    }
+}
+
+
 function buscaUsuario($id)
 {
     try {
@@ -180,6 +260,40 @@ function buscaUsuario($id)
             else
             {
                 return [false, 'No se pudo recuperar el alumno.'];
+            }
+            
+        }
+        
+    }
+    catch (mysqli_sql_exception $e) {
+        return [false, $e->getMessage()];
+    }
+    finally
+    {
+        cerrarConexion($conexion);
+    }
+}
+
+function buscaProducto($id)
+{
+    try {
+        $conexion = conectaTienda();
+
+        if ($conexion->connect_error)
+        {
+            return [false, $conexion->error];
+        }
+        else
+        {
+            $sql = "SELECT * FROM productos WHERE id = " . $id;
+            $resultados = $conexion->query($sql);
+            if ($resultados->num_rows == 1)
+            {
+                return [true, $resultados->fetch_assoc()];
+            }
+            else
+            {
+                return [false, 'No se pudo recuperar el producto.'];
             }
             
         }
