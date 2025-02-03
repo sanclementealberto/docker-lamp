@@ -4,41 +4,50 @@ class Participante {
     protected string $nombre;
     protected int $edad;
 
-    public function __construct(string $nombre, int $edad) {
+    public function __construct(string $nombre, int $edad)
+    {
         $this->nombre = $nombre;
         $this->edad = $edad;
     }
 
-    public function getNombre(): string {
+    public function getNombre(): string
+    {
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): void {
+    public function setNombre(string $nombre): void
+    {
         $this->nombre = $nombre;
     }
 
-    public function getEdad(): int {
+    public function getEdad(): int
+    {
         return $this->edad;
     }
 
-    public function setEdad(int $edad): void {
+    public function setEdad(int $edad): void
+    {
         $this->edad = $edad;
     }
 }
 
-class Jugador extends Participante {
+class Jugador extends Participante
+{
     private string $posicion;
 
-    public function __construct(string $nombre, int $edad, string $posicion) {
+    public function __construct(string $nombre, int $edad, string $posicion)
+    {
         parent::__construct($nombre, $edad);
         $this->posicion = $posicion;
     }
 
-    public function getPosicion(): string {
+    public function getPosicion(): string
+    {
         return $this->posicion;
     }
 
-    public function setPosicion(string $posicion): void {
+    public function setPosicion(string $posicion): void
+    {
         $this->posicion = $posicion;
     }
 }
@@ -46,16 +55,19 @@ class Jugador extends Participante {
 class Arbitro extends Participante {
     private int $anosArbitraje;
 
-    public function __construct(string $nombre, int $edad, int $anosArbitraje) {
+    public function __construct(string $nombre, int $edad, int $anosArbitraje)
+    {
         parent::__construct($nombre, $edad);
         $this->anosArbitraje = $anosArbitraje;
     }
 
-    public function getAnosArbitraje(): int {
+    public function getAnosArbitraje(): int
+    {
         return $this->anosArbitraje;
     }
 
-    public function setAnosArbitraje(int $anosArbitraje): void {
+    public function setAnosArbitraje(int $anosArbitraje): void
+    {
         $this->anosArbitraje = $anosArbitraje;
     }
 }

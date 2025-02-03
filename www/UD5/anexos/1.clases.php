@@ -1,45 +1,55 @@
 <?php
 
-class Contacto {
+class Contacto
+{
     private string $nombre;
     private string $apellido;
     private string $telefono;
 
-    public function __construct(string $nombre, string $apellido, string $telefono) {
+    public function __construct(string $nombre, string $apellido, string $telefono)
+    {
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->telefono = $telefono;
     }
 
-    public function getNombre(): string {
+    public function getNombre(): string
+    {
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): void {
+    public function setNombre(string $nombre): void
+    {
         $this->nombre = $nombre;
     }
 
-    public function getApellido(): string {
+    public function getApellido(): string
+    {
         return $this->apellido;
     }
 
-    public function setApellido(string $apellido): void {
+    public function setApellido(string $apellido): void
+    {
         $this->apellido = $apellido;
     }
 
-    public function getTelefono(): string {
+    public function getTelefono(): string
+    {
         return $this->telefono;
     }
 
-    public function setTelefono(string $telefono): void {
+    public function setTelefono(string $telefono): void
+    {
         $this->telefono = $telefono;
     }
 
-    public function muestraInformacion(): void {
+    public function muestraInformacion(): void
+    {
         echo "Nombre: {$this->nombre}, Apellido: {$this->apellido}, Teléfono: {$this->telefono}<br>";
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         echo "Destruyendo el objeto de {$this->nombre} {$this->apellido}<br>";
     }
 }

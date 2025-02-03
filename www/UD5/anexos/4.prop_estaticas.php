@@ -1,15 +1,18 @@
 <?php
 
-class Alien {
+class Alien
+{
     private string $nombre;
     private static int $numberOfAliens = 0;
 
-    public function __construct(string $nombre) {
+    public function __construct(string $nombre)
+    {
         $this->nombre = $nombre;
         self::$numberOfAliens++;
     }
 
-    public static function getNumberOfAliens(): int {
+    public static function getNumberOfAliens(): int
+    {
         return self::$numberOfAliens;
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
-abstract class Persona {
+abstract class Persona
+{
     private int $id;
     protected string $nombre;
     protected string $apellidos;
 
-    public function __construct(int $id, string $nombre, string $apellidos) {
+    public function __construct(int $id, string $nombre, string $apellidos)
+    {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
@@ -13,39 +15,49 @@ abstract class Persona {
 
     abstract public function accion(): string;
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function setId(int $id): void {
+    public function setId(int $id): void
+    {
         $this->id = $id;
     }
 
-    public function getNombre(): string {
+    public function getNombre(): string
+    {
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): void {
+    public function setNombre(string $nombre): void
+    {
         $this->nombre = $nombre;
     }
 
-    public function getApellidos(): string {
+    public function getApellidos(): string
+    {
         return $this->apellidos;
     }
 
-    public function setApellidos(string $apellidos): void {
+    public function setApellidos(string $apellidos): void
+    {
         $this->apellidos = $apellidos;
     }
 }
 
-class Usuario extends Persona {
-    public function accion(): string {
+class Usuario extends Persona
+{
+    public function accion(): string
+    {
         return "$this->nombre $this->apellidos está navegando en el sistema con rol <em>Usuario</em>.";
     }
 }
 
-class Administrador extends Persona {
-    public function accion(): string {
+class Administrador extends Persona
+{
+    public function accion(): string
+    {
         return "$this->nombre $this->apellidos está gestionando el sistema con rol <em>Administrador</em>.";
     }
 }
