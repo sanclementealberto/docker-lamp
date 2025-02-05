@@ -1,9 +1,5 @@
 <!--include_once solo una vez | include -->
 
-<?php
-include_once 'crearCookie.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +10,12 @@ include_once 'crearCookie.php';
 </head>
 <body>
     <?php
-    if(!isset($_COOKIE[$cookie__name])){
-        echo "La cookie con nombre '" .$cookie_nombre ."' no está definida !";
+    $cookie_name = "usuario";
+    if(!isset($_COOKIE[$cookie_name])){
+        echo "La cookie con nombre '" . htmlspecialchars($$cookie_name) ."' no está definida !";
     }else{
-        echo "La cookie '".$cookie_name . "' está definida !<br>";
-        echo " Su vallor es ". $_COOKIE[$cookie__name];
+        echo "La cookie '". htmlspecialchars($cookie_name) . "' está definida !<br>";
+        echo " Su valor es ". $_COOKIE[$cookie_name]; //asi obtengo el valor de la cookie con el nombre usuario
     }
 
 ?>
