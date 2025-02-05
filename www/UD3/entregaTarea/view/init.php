@@ -45,7 +45,7 @@ $tablaUsuarios = crearTablaUsuario();
                             
                             
                             echo "<div class='alert alert-success'>Conexión realizada y base de datos creada correctamente.</div>";
-                        } catch (Exception $e) {
+                        } catch (mysqli_sql_exception $e) {
                             // Error en la conexión o creación de la base de datos
                             echo "<div class='alert alert-danger'>Error: " . $e->getMessage() . "</div>";
                         }

@@ -25,7 +25,7 @@ $menu = menuTarea();
 <body>
     <?php echo $header; ?>
 
-    <div class="container-fluid vh-100">
+    <div class="container-fluid vh-100">    
         <div class="row ">
             <?php echo $menu; ?>
 

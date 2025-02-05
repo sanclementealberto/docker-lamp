@@ -1,11 +1,11 @@
 <?php
-include_once("./view/header.php");
+include_once("../view/header.php");
 $header = headerDonantes();
 
-include_once("./view/footer.php");
+include_once("../view/footer.php");
 $footer = footerDonantes();
 
-include_once("./view/menu.php");
+include_once("../view/menu.php");
 $menu = menuDonantes();
 
 
@@ -32,14 +32,33 @@ $menu = menuDonantes();
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="container justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>DONACIONES </h2>
+                    <h2>Donante Borrado</h2>
                 </div>
+                <?php
+                    include_once("../model/mysqli.php");
+                  
+                    $iddonante=$_GET['id'];
+                    if(!empty($iddonante)){
 
-                <div class="container justify-content-between">
-                    <p>INICIO DONACIONES </p>
-                </div>
+                    $resultado=eliminarDonanteMYSQL($iddonante);
+
+                    if($resultado[0]===true){
+                        
+                        echo '<div class="alert alert-success "role="alert">'.$resultado[1].'</div>';
 
 
+                    }else{
+
+                        echo '<div class="alert alert-info" role="alert">'.$resultado[1].'</div>';
+                    }
+
+                }else{
+                    echo '<div class="alert alert-info" role="alert">donante no encontrado</div>';
+                }
+                    
+                ?>
+            
+              
             </main>
 
         </div>
