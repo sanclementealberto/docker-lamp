@@ -1,5 +1,10 @@
 upload/
 .DS_Store
 */.DS_Store
+<<<<<<< HEAD
 www/UD4/entregaTarea/files/*
 !www/UD4/entregaTarea/files/.gitkeep
+=======
+.env
+www/UD4/entregaTarea_solucion/files/
+>>>>>>> marcosanclemente/main
