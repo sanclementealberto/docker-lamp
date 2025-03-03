@@ -1,7 +1,7 @@
 <?php
 
 trait CalculosCentroEstudos{
-    public function numeroDeAprobadoss()
+    public function numeroDeAprobadoss($notas)
     {
         $aprobados=0;
         foreach($this->notass as $nota)
@@ -16,7 +16,7 @@ trait CalculosCentroEstudos{
     }
 
     
-    public function numeroDeSuspensoss(){
+    public function numeroDeSuspensoss($notas){
 
         $suspensos=0;
         foreach($this->notass as $nota)
@@ -31,7 +31,7 @@ trait CalculosCentroEstudos{
 
 
 
-    public function notaMediass(){
+    public function notaMediass($notas){
       
         $total=array_sum($this->notass);
         //3 numero de decimas
@@ -51,7 +51,10 @@ trait MostrarCalculos
 
     function showCalculusStudyCenter($numberoaprobados,$numerosuspensos,$media)
     {
-        
+        echo "Número de aprobados: $numberoaprobados<br>";
+        echo "Número de suspensos: $numerosuspensos<br>";
+        echo "Nota media: $media<br>";
+
     }
 
 }
@@ -60,7 +63,30 @@ trait MostrarCalculos
 
 class NotasTraitt
 {
+    use CalculosCentroEstudos;
+    use MostrarCalculos;
 
+    private $notas;
+
+    public function __construct($notas)
+    {
+        $this->notas=$notas;
+    }
+
+    public function calcularYMostrar()
+    {
+        $aprobados=$this->numeroDeAprobadoss($this->notas);
+        $suspendidos=$this->numeroDeSuspensoss($this->notas);
+        $notaMedia=$this->notaMediass($this->notas);
+
+        $this->saludo();
+        $this->showCalculusStudyCenter($aprobados,$suspendidos,$notaMedia);
+    }
 }
+
+
+$notas_trait= new NotasTraitt([4,5,7,1,9]);
+
+$notas_trait->calcularYMostrar();
 
 ?>
