@@ -2,3 +2,4 @@ upload/
 .DS_Store
 */.DS_Store
 www/UD4/entregaTarea/files/*
+!www/UD4/entregaTarea/files/.gitkeep
