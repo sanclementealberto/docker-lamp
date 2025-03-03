@@ -4,7 +4,7 @@ trait CalculosCentroEstudos{
     public function numeroDeAprobadoss($notas)
     {
         $aprobados=0;
-        foreach($this->notass as $nota)
+        foreach($this->notas as $nota)
         {
             if($nota>=5)
             {
@@ -19,7 +19,7 @@ trait CalculosCentroEstudos{
     public function numeroDeSuspensoss($notas){
 
         $suspensos=0;
-        foreach($this->notass as $nota)
+        foreach($this->notas as $nota)
         {
             if($nota<5){
                 $suspensos++;
@@ -33,9 +33,9 @@ trait CalculosCentroEstudos{
 
     public function notaMediass($notas){
       
-        $total=array_sum($this->notass);
+        $total=array_sum($this->notas);
         //3 numero de decimas
-        return round($total /count ($this->notass), 3);
+        return round($total /count ($this->notas), 3);
 
     
     
