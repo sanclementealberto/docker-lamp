@@ -113,7 +113,7 @@ class FicherosDBImp implements FicherosDBInt
 
             return true;
         }
-        catch (PDOExcetion $e)
+        catch (PDOException $e)
         {
             throw new DatabaseException('Error al crear el fichero: ' . $e->getMessage(), 0, $e, __METHOD__, $stmt->queryString);
         }

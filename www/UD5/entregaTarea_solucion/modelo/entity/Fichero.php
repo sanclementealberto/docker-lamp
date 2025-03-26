@@ -13,7 +13,7 @@ class Fichero
     public const FORMATOS = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/png'];
     public const MAX_SIZE = 10485760; // 10MB
 
-    public function __construct(string $nombre, string $file, string $descripcion, Tarea $tarea = null)
+    public function __construct(string $nombre, string $file, string $descripcion, ?Tarea $tarea )
     {
         $this->id = 0;
         $this->nombre = $nombre;

@@ -28,7 +28,9 @@ if (!empty($_GET))
                     $e->getCode(),
                     $e
                 );
+               
             }
+            
             if ($borrado) $borrado = borraFichero($archivo['id']);
 
             if ($borrado)

@@ -5,13 +5,13 @@ require_once __DIR__ . '/Rol.php';
 class Usuario 
 {
     private int $id;
-    private String $username;
-    private String $nombre;
-    private String $apellidos;
-    private String $contrasena;
+    private string $username;
+    private string $nombre;
+    private string $apellidos;
+    private string $contrasena;
     private Rol $rol;
 
-    public function __construct(String $username = '', String $nombre = '', String $apellidos = '', String $contrasena = '', Rol $rol = Rol::USER) 
+    public function __construct(string $username = '', string $nombre = '', string $apellidos = '', string $contrasena = '', Rol $rol = Rol::USER) 
     {
         $this->id = 0;
         $this->username = $username;
@@ -31,42 +31,42 @@ class Usuario
         $this->id = $id;
     }
 
-    public function getUsername(): String 
+    public function getUsername(): string 
     {
         return $this->username;
     }
 
-    public function setUsername(String $username): void 
+    public function setUsername(string $username): void 
     {
         $this->username = $username;
     }
 
-    public function getNombre(): String 
+    public function getNombre(): string 
     {
         return $this->nombre;
     }
 
-    public function setNombre(String $nombre): void 
+    public function setNombre(string $nombre): void 
     {
         $this->nombre = $nombre;
     }
 
-    public function getApellidos(): String 
+    public function getApellidos(): string 
     {
         return $this->apellidos;
     }
 
-    public function setApellidos(String $apellidos): void 
+    public function setApellidos(string $apellidos): void 
     {
         $this->apellidos = $apellidos;
     }
 
-    public function getContrasena(): String 
+    public function getContrasena(): string 
     {
         return $this->contrasena;
     }
 
-    public function setContrasena(String $contrasena): void 
+    public function setContrasena(string $contrasena): void 
     {
         $this->contrasena = $contrasena;
     }
@@ -119,10 +119,12 @@ class Usuario
         elseif (strlen($data['contrasena']) < 6) 
         {
             $errors['contrasena'] = 'La contraseña debe tener al menos 6 caracteres';
-        }
+        }   
 
-        $valores = array_map(fn($rol) => $rol->value, Rol::cases());
-        if (!isset($data['rol']) || !in_array($data['rol'], $valores))
+        //array_column fnciona (array que recorremos, $columnkey 'value, index opcional);
+
+        $valores = array_column(Rol::cases(), 'value');
+        if (!isset($data['rol']) || !in_array(needle: $data['rol'], haystack: $valores))
         {
             $errors['rol'] = 'El rol no es válido';
         }

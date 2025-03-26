@@ -4,7 +4,7 @@ class DatabaseException extends Exception {
     private $method;
     private $sql;
 
-    public function __construct($message, $code = 0, Exception $previous = null, $method = '', $sql = '') {
+    public function __construct($message, $code = 0,  $method = '', $sql = '',?Exception $previous) {
         parent::__construct($message, $code, $previous);
         $this->method = $method;
         $this->sql = $sql;

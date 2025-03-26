@@ -80,7 +80,7 @@ function nuevoUsuario($nombre, $apellidos, $username, $contrasena, $rol=0)
 
         return [true, null];
     }
-    catch (PDOExcetion $e)
+    catch (PDOException $e)
     {
         return [false, $e->getMessage()];
     }
@@ -121,7 +121,7 @@ function actualizaUsuario($id, $nombre, $apellidos, $username, $contrasena, $rol
 
         return [true, null];
     }
-    catch (PDOExcetion $e)
+    catch (PDOException $e)
     {
         return [false, $e->getMessage()];
     }
@@ -145,7 +145,7 @@ function borraUsuario($id)
         
         return [$con->commit(), ''];
     }
-    catch (PDOExcetion $e)
+    catch (PDOException $e)
     {
         return [false, $e->getMessage()];
     }
@@ -174,7 +174,7 @@ function buscaUsuario($id)
             return null;
         }
     }
-    catch (PDOExcetion $e)
+    catch (PDOException $e)
     {
         return null;
     }
@@ -203,7 +203,7 @@ function buscaUsername($username)
             return null;
         }
     }
-    catch (PDOExcetion $e)
+    catch (PDOException $e)
     {
         return null;
     }
@@ -305,7 +305,7 @@ function nuevoFichero($file, $nombre, $descripcion, $idTarea)
 
         return [true, null];
     }
-    catch (PDOExcetion $e)
+    catch (PDOException $e)
     {
         return [false, $e->getMessage()];
     }

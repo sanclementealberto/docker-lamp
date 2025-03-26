@@ -7,6 +7,8 @@ require_once('../modelo/pdo.php');
 
 function comprobarUsuario($nombre, $pass, $conPDO)
 {
+    //obtengo la contraseña ,el id y erol mediante el usuario
+    //con el nombre el usuario obtengo el id,rol y contrasena
     $usuarioBD = buscaUsername($nombre);
 
     //Comprobamos que haya usuario
