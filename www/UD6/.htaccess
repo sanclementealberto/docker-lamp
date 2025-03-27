@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Nueva regla QSA (Query String Append): Esto significa que, si la URL original tiene una cadena de consulta (como ?id=123)
+# (.*): Esto es una expresión regular que coincide con cualquier cosa en la URL,
+RewriteRule ^(.*)$ anexosMios/Hotel.php [QSA,L]
