@@ -139,7 +139,7 @@ Flight::route("POST /login", function () {
         } else {
 
             Flight::json(["error" => "usuario no existe"]);
-            Flight::stop();
+            
             Flight::stop();
 
             exit;
