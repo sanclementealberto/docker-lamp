@@ -9,6 +9,7 @@ Flight::route('/', function () {
     echo 'hello world!';
 });
 
+
 //EL Primer db vviene de docker-compose.yml y hay varios servicios.
 //db,www,phpmyadmin
 
